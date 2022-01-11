@@ -70,15 +70,19 @@
 //	//时间起点+AOI
 //	//Sequence8相比Sequence7 Option合并了
 //	FILE *fp;
-//	string questionid = "mid-shu-02-output\\";
+//	string questionid = "hou-shu-01-output\\";
 //	const string in_dir = "E:\\read-all\\" + questionid;
 //	const string out_dir = "E:\\out\\filter\\";
 //	vector<string> names{
 //		"Patstr_recording18","Patstr_recording24","Patstr_recording23","Patstr_recording25",
 //		"Patstr_recording26","Patstr_recording28","Patstr_recording30",
 //		"Patstr_recording31","Patstr_recording32","Patstr_recording46",
-//		"Patstr_recording63","Patstr_recording70"
-//	};
+//		"Patstr_recording63","Patstr_recording70",
+//		"Patstr_recording18new","Patstr_recording24new","Patstr_recording23new",
+//		"Patstr_recording26new","Patstr_recording28new","Patstr_recording30new",
+//		"Patstr_recording31new","Patstr_recording32new","Patstr_recording46new",
+//		"Patstr_recording63new","Patstr_recording70new"
+//	};//"Patstr_recording25new",这个没有挖掘到模式
 //	//mid-shu-01-output 没有25
 //	//mid-shu-03-output 没有25
 //	//mid-shu-04-output 没有23
