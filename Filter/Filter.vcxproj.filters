@@ -24,5 +24,8 @@
     <ClCompile Include="everypeople.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="supp.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

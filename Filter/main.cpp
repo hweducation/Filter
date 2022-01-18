@@ -1,5 +1,6 @@
 /*
 把挖掘出的模式长度>=6的过滤出来
+并排序输出
 */
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
