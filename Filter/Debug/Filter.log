@@ -1,4 +1,3 @@
-﻿  main.cpp
-c:\users\wang\source\repos\filter\filter\main.cpp(107): warning C4018: “<”: 有符号/无符号不匹配
-c:\users\wang\source\repos\filter\filter\main.cpp(123): warning C4101: “data2”: 未引用的局部变量
+﻿  everypeople.cpp
+c:\users\wang\source\repos\filter\filter\everypeople.cpp(135): warning C4018: “<”: 有符号/无符号不匹配
   Filter.vcxproj -> C:\Users\WANG\source\repos\Filter\Debug\Filter.exe
