@@ -1,6 +1,8 @@
 ///*
 //在main的基础上改的
 //模式长度>=6的过滤出来后，计算每个模式的支持度，进行加和
+//输入 "E:\\read-all\\filter\\" + questionid+"\\";
+//输出 "E:\\out\\sum\\";
 //*/
 //#define _CRT_SECURE_NO_WARNINGS
 //#include <iostream>

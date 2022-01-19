@@ -1,6 +1,8 @@
 ///*
 //把挖掘出的模式长度>=6的过滤出来
 //并排序输出
+//输入"E:\\read-all\\" + questionid;
+//输出"E:\\out\\filter\\";
 //*/
 //#define _CRT_SECURE_NO_WARNINGS
 //#include <iostream>
