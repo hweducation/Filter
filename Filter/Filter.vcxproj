@@ -124,6 +124,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="deleteBrackets.cpp" />
     <ClCompile Include="everypeople.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="sum.cpp" />
