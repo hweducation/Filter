@@ -112,10 +112,10 @@
 //		//};//高分组
 //		if (category == "high") {
 //			names.push_back("Patstr_recording18new");
+//			names.push_back("Patstr_recording46new");
 //			names.push_back("Patstr_recording23new");
 //			names.push_back("Patstr_recording24new");
 //			names.push_back("Patstr_recording28new");
-//			names.push_back("Patstr_recording46new");
 //			names.push_back("Patstr_recording70new");
 //		}
 //		else {
@@ -131,7 +131,6 @@
 //			"Patstr_recording25new", "Patstr_recording26new", "Patstr_recording30new",
 //			"Patstr_recording31new", "Patstr_recording32new", "Patstr_recording63new",
 //		*/
-//
 //		string tab = "\t";
 //		string in_path;
 //		int fileNum = 0;
@@ -204,39 +203,40 @@
 //
 //		}
 //	}
-//	////输出在high中支持度高在low中支持度低
-//	//string outName = out_dir + "high_low.csv";
-//	//ofstream out_file(outName, ofstream::out);//全局支持度路径
-//	//double thereshold = 0.02;//支持度阈值
-//	////unordered_map<string, double> 
-//	//stringstream ss;
-//	//for (auto aUmHighScsuppAll : umHighScsuppAll) {
-//	//	if (aUmHighScsuppAll.second > thereshold && umLowScsuppAll[aUmHighScsuppAll.first] < thereshold) {
-//	//		//high中的支持度 low中的支持度 前两者相减 模式名称
-//	//		ss << aUmHighScsuppAll.second << "," << umLowScsuppAll[aUmHighScsuppAll.first] << "," <<
-//	//			aUmHighScsuppAll.second - umLowScsuppAll[aUmHighScsuppAll.first] << "," << aUmHighScsuppAll.first;
-//	//	}
-//	//}
-//	//out_file << ss.str() << endl;
-//	//cout << ss.str() << endl;
-//	//out_file.close();
 //
-//	//输出在low中支持度高在high中支持度低
-//	string outName = out_dir + "low_high.csv";
+//	//输出在high中支持度高在low中支持度低
+//	string outName = out_dir + "high_low.csv";
 //	ofstream out_file(outName, ofstream::out);//全局支持度路径
-//	double thereshold = 0.1;//支持度阈值
+//	double thereshold = 0.02;//支持度阈值
 //	//unordered_map<string, double> 
 //	stringstream ss;
-//	for (auto aUmLowScsuppAll : umLowScsuppAll) {
-//		if (aUmLowScsuppAll.second > thereshold && umHighScsuppAll[aUmLowScsuppAll.first] < thereshold) {
+//	for (auto aUmHighScsuppAll : umHighScsuppAll) {
+//		if (aUmHighScsuppAll.second > thereshold && umLowScsuppAll[aUmHighScsuppAll.first] < thereshold) {
 //			//high中的支持度 low中的支持度 前两者相减 模式名称
-//			ss << aUmLowScsuppAll.second << "," << umHighScsuppAll[aUmLowScsuppAll.first] << "," <<
-//				aUmLowScsuppAll.second - umHighScsuppAll[aUmLowScsuppAll.first] << "," << aUmLowScsuppAll.first;
+//			ss << aUmHighScsuppAll.second << "," << umLowScsuppAll[aUmHighScsuppAll.first] << "," <<
+//				aUmHighScsuppAll.second - umLowScsuppAll[aUmHighScsuppAll.first] << "," << aUmHighScsuppAll.first;
 //		}
 //	}
 //	out_file << ss.str() << endl;
 //	cout << ss.str() << endl;
 //	out_file.close();
+//
+//	////输出在low中支持度高在high中支持度低
+//	//string outName = out_dir + "low_high.csv";
+//	//ofstream out_file(outName, ofstream::out);//全局支持度路径
+//	//double thereshold = 0.1;//支持度阈值
+//	////unordered_map<string, double> 
+//	//stringstream ss;
+//	//for (auto aUmLowScsuppAll : umLowScsuppAll) {
+//	//	if (aUmLowScsuppAll.second > thereshold && umHighScsuppAll[aUmLowScsuppAll.first] < thereshold) {
+//	//		//high中的支持度 low中的支持度 前两者相减 模式名称
+//	//		ss << aUmLowScsuppAll.second << "," << umHighScsuppAll[aUmLowScsuppAll.first] << "," <<
+//	//			aUmLowScsuppAll.second - umHighScsuppAll[aUmLowScsuppAll.first] << "," << aUmLowScsuppAll.first;
+//	//	}
+//	//}
+//	//out_file << ss.str() << endl;
+//	//cout << ss.str() << endl;
+//	//out_file.close();
 //	
 //	system("pause");
 //}

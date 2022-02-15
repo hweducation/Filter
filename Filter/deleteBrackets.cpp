@@ -1,4 +1,4 @@
-//删除模式名中的括号
+//删除模式名中的括号,然后将模式合并，这是由于虽然树的结构是不同的但是本质上是一种模式
 //输入"E:\\read-all\\filter\\" + questionid + "\\";
 //输出 "E:\\out\\deleteBrackets\\";
 //结束后把输出复制到输入重新跑另外3个代码
@@ -7,6 +7,7 @@
 #include <sstream>
 #include <fstream>
 #include <vector>
+#include <unordered_map>
 #include <algorithm>
 using namespace std;
 
@@ -68,12 +69,27 @@ public:
 		return tpattern1.n > tpattern2.n;
 	}
 };
+class PatStr {
+public:
+	string l0;
+	string l1;
+	string l2;
+	string l3;
+	string l4;
+	string l5;
+	string l6;
+	PatStr(string line0, string line1, string line2, string line3, string line4, string line5, string line6) :
+		l0(line0), l1(line1), l2(line2), l3(line3), l4(line4), l5(line5), l6(line6) {}
+	PatStr() {
+		l0 = l1 = l2 = l3 = l4 = l5 = l6 = "";
+	}
+};
 int main()
 {
 	//时间起点+AOI
 	//Sequence8相比Sequence7 Option合并了
 	FILE *fp;
-	string questionid = "mid-shu-04-output\\";
+	string questionid = "hou-shu-04-output\\";
 	const string in_dir = "E:\\read-all\\filter\\" + questionid + "\\";
 	const string out_dir = "E:\\out\\deleteBrackets\\";
 	vector<string> names{
@@ -112,7 +128,8 @@ int main()
 		const char * split = "\t";
 		string last_eye_movement_type = "0";
 		int start_flag = 0;
-		vector <string> res;//用于记录总数
+		vector <string> res;//用于记录总的
+		unordered_map <string, PatStr> um;
 
 		string lastType = "-1";
 		while (fgets(original_data, sizeof(original_data), fp))
@@ -131,7 +148,7 @@ int main()
 			for (int i = 0; i < 6; i++) {
 				newOriginal_data += line[i] + '\t';
 			}
-			string patStringDeleteBracket = "";
+			string patStringDeleteBracket = "";//删除括号后的模式名
 			//删除括号
 			for (auto a : line[7]) {
 				if (a != '(' && a != ')') {
@@ -139,17 +156,27 @@ int main()
 				}
 			}
 			newOriginal_data += patStringDeleteBracket;
-			//line[6]
+			//把出现次数合并
+			//map中没有这个模式名
+			if (um.find(patStringDeleteBracket) == um.end()) {
+				PatStr patstrTemp(line[0], line[1], line[2], line[3], line[4], line[5], line[6]);
+				um[patStringDeleteBracket] = patstrTemp;
+			}
+			else {//map中存在这个模式名
+				int n = atoi(line[2].c_str())+ atoi(um[patStringDeleteBracket].l2.c_str());
+				um[patStringDeleteBracket].l2 = to_string(n);
+
+			}
+			
 			res.push_back(newOriginal_data);
 			if (feof(fp))
 				break;
 		}
-		//把出现次数合并
-
-
 		stringstream ss;
-		for (auto a : res) {
-			ss << a;
+		char tab = '\t';
+		for (auto it = um.begin(); it != um.end();it++) {
+			ss << it->second.l0 << tab << it->second.l1 << tab << it->second.l2 << tab << it->second.l3
+				<< tab << it->second.l4 << tab << it->second.l5 << tab << it->second.l6 << tab << it->first;
 		}
 		out_file << ss.str() << endl;
 		cout << ss.str() << endl;

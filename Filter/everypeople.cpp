@@ -99,8 +99,6 @@
 //		return tpattern1.supp > tpattern2.supp;
 //	}
 //};
-//
-//
 //class UpsPattern {
 //public:
 //	double ar;
@@ -136,7 +134,7 @@
 //	vector<UpsPattern> allTopNVec;
 //	int topNumber = 5;	
 //
-//	string category = "low";//low  high
+//	string category = "high";//low  high
 //	const string out_dir = "E:\\out\\sum\\";
 //	string tab = ",";
 //	for (int m = 0; m < questionVec.size(); m++) {
