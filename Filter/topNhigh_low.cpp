@@ -1,5 +1,11 @@
 ///*
 //重新计算得到组别的总支持度后，输出在高分组中支持度高，低分组支持度低（通过支持度阈值设置）的模式 反之亦然
+//由于低分组所有模式的支持度都比高分组模式支持度低，所以
+//解决方法
+//1、重新定义支持度，还是改成rank的形式比较
+//2、将低分组模式支持度乘以2（或者>1）试一试
+//3、定义两个阈值
+//
 //
 //输入 in_dir = "E:\\read-all\\filter\\" + questionid + "\\";
 //输出 out_dir = "E:\\out\\sum\\" + questionid + "\\";
@@ -95,9 +101,12 @@
 //	const string in_dir = "E:\\read-all\\filter\\" + questionid + "\\";
 //	const string out_dir = "E:\\out\\sum\\" + questionid + "\\";
 //
-//	unordered_map<string, double> umScsuppAll;
-//	unordered_map<string, double> umHighScsuppAll;
-//	unordered_map<string, double> umLowScsuppAll;
+//	unordered_map<string, double> umScsuppAll; //高分组或者低分组支持度map
+//	unordered_map<string, string> umScsuppAll_everyone;//高分组或者低分组个人贡献的比率map
+//	unordered_map<string, double> umHighScsuppAll;//高分组支持度map
+//	unordered_map<string, string> umHighScsuppAll_everyone;//高分组个人贡献的比率map
+//	unordered_map<string, double> umLowScsuppAll;//低分组支持度map
+//	unordered_map<string, string> umLowScsuppAll_everyone;//低分组个人贡献的比率map
 //	vector<string> categoryNames{ "low","high" };
 //	for (int k = 0; k < categoryNames.size(); k++) {
 //		string category = categoryNames[k];//low  high
@@ -185,10 +194,10 @@
 //				if (line.size() == 0) {
 //					break;
 //				}
-//				double temp = (double)atoi(line[2].c_str()) / (double)sum;//如果对值做平均的话，改为sum,如果单纯相加，改为1.0
+//				double temp = (double)atoi(line[2].c_str()) / (double)sum;//如果对值做平均的话，改为(double)sum; 如果单纯相加，改为1.0
 //
 //				umScsuppAll[line[7]] += temp;
-//
+//				umScsuppAll_everyone[line[7]] += names[k] + to_string(temp) + ";";
 //				if (feof(fp))
 //					break;
 //			}
@@ -197,46 +206,77 @@
 //		//支持度计算结束
 //		if (category == "high") {
 //			umHighScsuppAll = umScsuppAll;
+//			umHighScsuppAll_everyone = umScsuppAll_everyone;
 //		}
 //		else {
 //			umLowScsuppAll = umScsuppAll;
-//
+//			umLowScsuppAll_everyone = umScsuppAll_everyone;
 //		}
+//		umScsuppAll.clear();
+//		umScsuppAll_everyone.clear();
 //	}
 //
-//	//输出在high中支持度高在low中支持度低
-//	string outName = out_dir + "high_low.csv";
-//	ofstream out_file(outName, ofstream::out);//全局支持度路径
-//	double thereshold = 0.02;//支持度阈值
-//	//unordered_map<string, double> 
-//	stringstream ss;
-//	for (auto aUmHighScsuppAll : umHighScsuppAll) {
-//		if (aUmHighScsuppAll.second > thereshold && umLowScsuppAll[aUmHighScsuppAll.first] < thereshold) {
-//			//high中的支持度 low中的支持度 前两者相减 模式名称
-//			ss << aUmHighScsuppAll.second << "," << umLowScsuppAll[aUmHighScsuppAll.first] << "," <<
-//				aUmHighScsuppAll.second - umLowScsuppAll[aUmHighScsuppAll.first] << "," << aUmHighScsuppAll.first;
-//		}
-//	}
-//	out_file << ss.str() << endl;
-//	cout << ss.str() << endl;
-//	out_file.close();
-//
-//	////输出在low中支持度高在high中支持度低
-//	//string outName = out_dir + "low_high.csv";
+//	////输出在high中支持度高在low中支持度低
+//	//string outName = out_dir + "high_low.csv";
 //	//ofstream out_file(outName, ofstream::out);//全局支持度路径
-//	//double thereshold = 0.1;//支持度阈值
+//	//double thereshold = 0.02;//支持度阈值
 //	////unordered_map<string, double> 
 //	//stringstream ss;
-//	//for (auto aUmLowScsuppAll : umLowScsuppAll) {
-//	//	if (aUmLowScsuppAll.second > thereshold && umHighScsuppAll[aUmLowScsuppAll.first] < thereshold) {
-//	//		//high中的支持度 low中的支持度 前两者相减 模式名称
-//	//		ss << aUmLowScsuppAll.second << "," << umHighScsuppAll[aUmLowScsuppAll.first] << "," <<
-//	//			aUmLowScsuppAll.second - umHighScsuppAll[aUmLowScsuppAll.first] << "," << aUmLowScsuppAll.first;
+//	//for (auto aUmHighScsuppAll : umHighScsuppAll) {
+//	//	//目前不设置阈值
+//	//	if (aUmHighScsuppAll.second > 0 && umLowScsuppAll[aUmHighScsuppAll.first] < 100) {//thereshold
+//	//		vector <string> name_suppHigh; //high中各用户的贡献 格式，例：Patstr_recording18new0.000595
+//	//		my_split(umHighScsuppAll_everyone[aUmHighScsuppAll.first], ';', name_suppHigh);
+//	//		int suppHighSize = name_suppHigh.size() == 0 ? 0 : name_suppHigh.size() - 1; //high中用户贡献的个数
+//
+//	//		vector <string> name_suppLow; //low中各用户的贡献 格式，例：Patstr_recording18new0.000595
+//	//		my_split(umLowScsuppAll_everyone[aUmHighScsuppAll.first], ';', name_suppLow);
+//	//		int suppLowSize = name_suppLow.size() == 0 ? 0 : name_suppLow.size() - 1;//low中用户贡献的个数
+//
+//	//		//high中的支持度 low中的支持度 前两者相减 high中各用户的贡献 数量 low中各用户的贡献 数量 模式名称
+//	//		ss << aUmHighScsuppAll.second << "," << umLowScsuppAll[aUmHighScsuppAll.first] << "," <<
+//	//			aUmHighScsuppAll.second - umLowScsuppAll[aUmHighScsuppAll.first] << "," <<
+//	//			umHighScsuppAll_everyone[aUmHighScsuppAll.first] << "," << to_string(suppHighSize) << "," <<
+//	//			umLowScsuppAll_everyone[aUmHighScsuppAll.first] << "," << to_string(suppLowSize) << "," <<
+//
+//	//			aUmHighScsuppAll.first;
 //	//	}
 //	//}
 //	//out_file << ss.str() << endl;
 //	//cout << ss.str() << endl;
 //	//out_file.close();
+//
+//
+//	//输出在low中支持度高在high中支持度低
+//	string outName = out_dir + "low_high.csv";
+//	ofstream out_file(outName, ofstream::out);//全局支持度路径
+//	double thereshold1 = 0;//支持度阈值
+//	double thereshold2 = 100;//支持度阈值
+//
+//	//unordered_map<string, double> 
+//	stringstream ss;
+//	for (auto aUmLowScsuppAll : umLowScsuppAll) {
+//		if (aUmLowScsuppAll.second > thereshold1 && umHighScsuppAll[aUmLowScsuppAll.first] < thereshold2) {
+//			vector <string> name_suppHigh; //high中各用户的贡献 格式，例：Patstr_recording18new0.000595
+//			my_split(umHighScsuppAll_everyone[aUmLowScsuppAll.first], ';', name_suppHigh);
+//			int suppHighSize = name_suppHigh.size() == 0 ? 0 : name_suppHigh.size() - 1; //high中用户贡献的个数
+//
+//			vector <string> name_suppLow; //low中各用户的贡献 格式，例：Patstr_recording18new0.000595
+//			my_split(umLowScsuppAll_everyone[aUmLowScsuppAll.first], ';', name_suppLow);
+//			int suppLowSize = name_suppLow.size() == 0 ? 0 : name_suppLow.size() - 1;//low中用户贡献的个数
+//			
+//			//low中的支持度 high中的支持度 前两者相减 low中各用户的贡献 数量 high中各用户的贡献 数量 两者相减 模式名称
+//			ss << aUmLowScsuppAll.second << "," << umHighScsuppAll[aUmLowScsuppAll.first] << "," <<
+//				aUmLowScsuppAll.second - umHighScsuppAll[aUmLowScsuppAll.first] << "," <<
+//				umLowScsuppAll_everyone[aUmLowScsuppAll.first] << "," << to_string(suppLowSize) << "," <<
+//				umHighScsuppAll_everyone[aUmLowScsuppAll.first] << "," << to_string(suppHighSize) << "," <<
+//				to_string(suppLowSize - suppHighSize) << "," <<
+//				aUmLowScsuppAll.first;
+//		}
+//	}
+//	out_file << ss.str() << endl;
+//	cout << ss.str() << endl;
+//	out_file.close();
 //	
 //	system("pause");
 //}

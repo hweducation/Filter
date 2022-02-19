@@ -1,7 +1,4 @@
-﻿  everypeople.cpp
-c:\users\wang\source\repos\filter\filter\everypeople.cpp(140): warning C4018: “<”: 有符号/无符号不匹配
-c:\users\wang\source\repos\filter\filter\everypeople.cpp(185): warning C4018: “<”: 有符号/无符号不匹配
-c:\users\wang\source\repos\filter\filter\everypeople.cpp(269): warning C4018: “<”: 有符号/无符号不匹配
-c:\users\wang\source\repos\filter\filter\everypeople.cpp(360): warning C4018: “>”: 有符号/无符号不匹配
-c:\users\wang\source\repos\filter\filter\everypeople.cpp(366): warning C4018: “<”: 有符号/无符号不匹配
+﻿  topNhigh_low.cpp
+c:\users\wang\source\repos\filter\filter\topnhigh_low.cpp(111): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\wang\source\repos\filter\filter\topnhigh_low.cpp(148): warning C4018: “<”: 有符号/无符号不匹配
   Filter.vcxproj -> C:\Users\WANG\source\repos\Filter\Debug\Filter.exe

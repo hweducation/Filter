@@ -13,7 +13,6 @@
 //输入 "E:\\read-all\\filter\\" + questionid + "\\";
 //输出 "E:\\out\\sum\\" + questionid + "\\highallSparse.csv";
 //
-//
 //3、输出每个人TopN的模式到一个文件中，就是将题目合并，输出文件多了一列题目名
 //输入 "E:\\read-all\\filter\\" + questionid + "\\";
 //输出 "E:\\out\\sum\\highallSparse.csv";
@@ -41,6 +40,7 @@
 //	0-成功;
 //	其它-失败;
 // */
+//const double hss = 0.8;//PWF分段函数中的参数，全局支持度阈值，
 //
 //int my_split(const string& src, const char& delim,
 //	vector<string>& vec)
@@ -233,11 +233,14 @@
 //				}
 //				double temp = (double)atoi(line[2].c_str()) / (double)sum;//如果对值做平均的话，改为sum,如果单纯相加，改为1.0
 //
+//
+//
 //				umScsuppAll[line[7]] += temp;
 //
 //				if (feof(fp))
 //					break;
 //			}
+//
 //			fclose(fp);
 //		}
 //		//支持度计算结束
@@ -344,7 +347,7 @@
 //			for (auto aUmAR : umAR) {
 //				double RR = aUmAR.second - ARsum / (double)alphasum;
 //				umRR[aUmAR.first] = RR;
-//				umTypical[aUmAR.first] = umScsuppAll[aUmAR.first] * umRR[aUmAR.first];
+//				umTypical[aUmAR.first] = (hss-umScsuppAll[aUmAR.first])* umRR[aUmAR.first];
 //			}
 //			stringstream ss;
 //			ss << "AR" << tab << "RR" << tab << "Typical" << tab << "alpha" << endl;
