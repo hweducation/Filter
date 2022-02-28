@@ -5,18 +5,20 @@
 //输入 "E:\\read-all\\filter\\" + questionid + "\\";
 //输出 "E:\\out\\sum\\" + questionid + "\\";
 //
-//2、计算每个模式的支持度，进行加和，并输出组别的总支持度
+//2、计算每个模式的支持度，进行加和，并输出组别的总支持度（无了）
 //输入 "E:\\read-all\\filter\\" + questionid + "\\";
 //输出 "E:\\out\\sum\\all\\" + questionid + "\\" + category + "_suppall.csv";
 //
-//3、输出每个人每道题TopN的模式到一个文件中
+//3、输出每个人每道题TopN的模式到一个文件中（无了）
 //输入 "E:\\read-all\\filter\\" + questionid + "\\";
 //输出 "E:\\out\\sum\\" + questionid + "\\highallSparse.csv";
 //
-//3、输出每个人TopN的模式到一个文件中，就是将题目合并，输出文件多了一列题目名
+//4、输出每个人TopN的模式到一个文件中，就是将题目合并，输出文件多了一列题目名
 //输入 "E:\\read-all\\filter\\" + questionid + "\\";
 //输出 "E:\\out\\sum\\highallSparse.csv";
 //
+//5、每个人每道题TopN的模式到一个文件中，是根据4复制粘贴的便于将维度缩小至每一道题目上
+//"E:\\out\\sum\\" + questionid + "\\highallSparse截.csv";
 //*/
 //#define _CRT_SECURE_NO_WARNINGS
 //#include <iostream>
@@ -40,7 +42,7 @@
 //	0-成功;
 //	其它-失败;
 // */
-//const double hss = 0.8;//PWF分段函数中的参数，全局支持度阈值，
+//const double hss = 0.04;//PWF分段函数中的参数，全局支持度阈值，含义是：在全局支持度中大于这个支持度阈值的模式不要了
 //
 //int my_split(const string& src, const char& delim,
 //	vector<string>& vec)
@@ -132,9 +134,11 @@
 //
 //	//所有人的典型度的TopN加入vec里面方便对比
 //	vector<UpsPattern> allTopNVec;
-//	int topNumber = 5;	
+//	int topNumber = 20;	
+//	vector<string> categoryNames{ "low","high" };
+//	//for (int k = 0; k < categoryNames.size(); k++) {
+//	string category = "low";//low  high categoryNames[k]
 //
-//	string category = "high";//low  high
 //	const string out_dir = "E:\\out\\sum\\";
 //	string tab = ",";
 //	for (int m = 0; m < questionVec.size(); m++) {
@@ -143,7 +147,7 @@
 //		string questionid = questionVec[m];
 //
 //		const string in_dir = "E:\\read-all\\filter\\" + questionid + "\\";
-//		
+//
 //		vector<string> names;
 //		//	//"Patstr_recording18","Patstr_recording23","Patstr_recording24","Patstr_recording25",
 //		//	//"Patstr_recording26","Patstr_recording28","Patstr_recording30",
@@ -154,19 +158,31 @@
 //		//};//高分组
 //		if (category == "high") {
 //			names.push_back("Patstr_recording18new");
+//			names.push_back("Patstr_recording46new");
 //			names.push_back("Patstr_recording23new");
 //			names.push_back("Patstr_recording24new");
+//			names.push_back("Patstr_recording25new");//25变成high了
 //			names.push_back("Patstr_recording28new");
-//			names.push_back("Patstr_recording46new");
 //			names.push_back("Patstr_recording70new");
+//			//后加的
+//			names.push_back("Patstr_recording20new");
+//			names.push_back("Patstr_recording47new");
+//			names.push_back("Patstr_recording52new");
+//			names.push_back("Patstr_recording71new");
 //		}
 //		else {
-//			names.push_back("Patstr_recording25new");
 //			names.push_back("Patstr_recording26new");
-//			names.push_back("Patstr_recording32new");
 //			names.push_back("Patstr_recording30new");
 //			names.push_back("Patstr_recording31new");
+//			names.push_back("Patstr_recording32new");
 //			names.push_back("Patstr_recording63new");
+//			//后加的
+//			names.push_back("Patstr_recording19new");
+//			names.push_back("Patstr_recording27new");
+//			names.push_back("Patstr_recording33new");
+//			names.push_back("Patstr_recording34new");
+//			names.push_back("Patstr_recording35new");
+//			names.push_back("Patstr_recording45new");
 //		}
 //		/*
 //		低分组
@@ -235,7 +251,7 @@
 //
 //
 //
-//				umScsuppAll[line[7]] += temp;
+//				umScsuppAll[line[7]] += temp / names.size();//全局支持度修改成了平均值，即除以了总人数
 //
 //				if (feof(fp))
 //					break;
@@ -347,7 +363,13 @@
 //			for (auto aUmAR : umAR) {
 //				double RR = aUmAR.second - ARsum / (double)alphasum;
 //				umRR[aUmAR.first] = RR;
-//				umTypical[aUmAR.first] = (hss-umScsuppAll[aUmAR.first])* umRR[aUmAR.first];
+//				//公式3.7的分段函数
+//				if (umScsuppAll[aUmAR.first] >= hss) {
+//					umTypical[aUmAR.first] = 0;
+//				}
+//				else {
+//					umTypical[aUmAR.first] = (hss - umScsuppAll[aUmAR.first])* umRR[aUmAR.first];
+//				}
 //			}
 //			stringstream ss;
 //			ss << "AR" << tab << "RR" << tab << "Typical" << tab << "alpha" << endl;
@@ -380,7 +402,12 @@
 //		}
 //		//稀疏性计算结束
 //
+//
 //	}
+//	//}
+//	//输出两个表格
+//	//for()
+//	//string tab = ",";
 //	//输出每个人TopN的模式到一个文件中
 //	stringstream ss;
 //	ss << "personName" << tab << "AR" << tab << "RR" << tab << "Typical" << tab << "questionid" << tab << "alpha" << endl;
@@ -391,6 +418,8 @@
 //	out_file << ss.str() << endl;
 //	cout << ss.str() << endl;
 //	out_file.close();
+//	
+//
 //
 //	system("pause");
 //}

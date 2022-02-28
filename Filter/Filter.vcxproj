@@ -126,6 +126,7 @@
   <ItemGroup>
     <ClCompile Include="deleteBrackets.cpp" />
     <ClCompile Include="everypeople.cpp" />
+    <ClCompile Include="everyPeopleQuestion.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="sum.cpp" />
     <ClCompile Include="topNhigh_low.cpp" />

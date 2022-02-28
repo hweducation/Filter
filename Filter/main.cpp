@@ -89,7 +89,7 @@
 //	//时间起点+AOI
 //	//Sequence8相比Sequence7 Option合并了
 //	FILE *fp;
-//	string questionid = "hou-shu-04-output\\";
+//	string questionid = "mid-shu-04-output\\";
 //	const string in_dir = "E:\\read-all\\" + questionid;
 //	const string out_dir = "E:\\out\\filter\\";
 //	vector<string> names{
@@ -100,7 +100,12 @@
 //		"Patstr_recording18new","Patstr_recording23new","Patstr_recording24new","Patstr_recording25new",
 //		"Patstr_recording26new","Patstr_recording28new","Patstr_recording30new",
 //		"Patstr_recording31new","Patstr_recording32new","Patstr_recording46new",
-//		"Patstr_recording63new","Patstr_recording70new"
+//		"Patstr_recording63new","Patstr_recording70new",
+//		//新加的10道
+//		"Patstr_recording19new","Patstr_recording20new","Patstr_recording27new",
+//		"Patstr_recording33new","Patstr_recording34new","Patstr_recording35new",
+//		"Patstr_recording45new","Patstr_recording47new","Patstr_recording52new","Patstr_recording71new",
+//
 //	};//这个没有挖掘到模式
 //	//mid-shu-01-output 没有25
 //	//mid-shu-03-output 没有25
@@ -148,6 +153,7 @@
 //		}
 //		stringstream ss;
 //		string tab = "\t";
+//		/* 对模式按照支持度排序
 //		vector<TPattern> tPatternVec;
 //		for (auto a	 : res) {
 //			//ss << a.first << "," << a.second.first << "," << a.second.second << endl;
@@ -161,6 +167,11 @@
 //		sort(tPatternVec.begin(), tPatternVec.end(), CompGreater());//降序排序
 //		for (auto a : tPatternVec) {
 //			ss << a.n << '\t' << a.length << '\t' << a.patstring;
+//		}		
+//		*/
+//		
+//		for (auto a : res) {
+//			ss << a;
 //		}
 //		//ss << "total sequence " << merge_res.size() << endl;
 //		//cout << ss.str() << endl;
