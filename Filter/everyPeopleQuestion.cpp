@@ -112,24 +112,24 @@
 //	//Sequence8相比Sequence7 Option合并了
 //
 //	vector<string> questionVec;
-//	questionVec.push_back("hou-shu-01-output");
-//	questionVec.push_back("hou-shu-04-output");
-//	questionVec.push_back("mid-shu-02-output");
-//	questionVec.push_back("mid-shu-03-output");
-//	questionVec.push_back("mid-shu-04-output");
+//	questionVec.push_back("hou-shu-01-output");//0
+//	questionVec.push_back("hou-shu-04-output");//1
+//	questionVec.push_back("mid-shu-02-output");//2
+//	questionVec.push_back("mid-shu-03-output");//3
+//	questionVec.push_back("mid-shu-04-output");//4
 //
 //	//所有人的典型度的TopN加入vec里面方便对比
 //	vector<UpsPattern> allTopNVec;
 //	vector<UpsPattern> allTopNVecHigh;
 //	vector<UpsPattern> allTopNVecLow;
-//	int topNumber = 20;
+//	int topNumber = 50;
 //	vector<string> categoryNames{ "low","high" };
 //	unordered_map<string, double> umScsuppAll;
 //	unordered_map<string, double> umScsuppAllHigh;//高分组支持度
 //	unordered_map<string, double> umScsuppAllLow;//低分组支持度
 //	const string out_dir = "E:\\out\\sum\\";
 //	string tab = ",";
-//	string questionid = questionVec[0];
+//	string questionid = questionVec[2];
 //	
 //	for (int k = 0; k < categoryNames.size(); k++) {
 //		string category = categoryNames[k];//low  high categoryNames[k]
@@ -151,34 +151,43 @@
 //			names.push_back("Patstr_recording46new");
 //			names.push_back("Patstr_recording23new");
 //			names.push_back("Patstr_recording24new");
-//			//names.push_back("Patstr_recording25new");//25变成high了
+//			names.push_back("Patstr_recording25new");
 //			names.push_back("Patstr_recording28new");
 //			names.push_back("Patstr_recording70new");
-//			//后加的
 //			names.push_back("Patstr_recording20new");
-//			//names.push_back("Patstr_recording47new");
 //			names.push_back("Patstr_recording52new");
-//			names.push_back("Patstr_recording71new");
-//			//
 //			names.push_back("Patstr_recording34new");
+//			names.push_back("Patstr_recording31new");
+//
+//			////原始12个人的分组
+//			//names.push_back("Patstr_recording18new");
+//			//names.push_back("Patstr_recording46new");
+//			//names.push_back("Patstr_recording70new");
+//			//names.push_back("Patstr_recording28new");
+//			//names.push_back("Patstr_recording24new");
+//			//names.push_back("Patstr_recording23new");
 //		}
 //		else {
 //			names.push_back("Patstr_recording26new");
-//			names.push_back("Patstr_recording30new");
-//			//names.push_back("Patstr_recording31new");
+//			names.push_back("Patstr_recording30new");//
 //			names.push_back("Patstr_recording32new");
 //			names.push_back("Patstr_recording63new");
-//			//后加的
 //			names.push_back("Patstr_recording19new");
 //			names.push_back("Patstr_recording27new");
 //			names.push_back("Patstr_recording33new");
-//			//names.push_back("Patstr_recording34new");
 //			names.push_back("Patstr_recording35new");
 //			names.push_back("Patstr_recording45new");
-//			names.push_back("Patstr_recording31new");
-//
-//			//
 //			names.push_back("Patstr_recording47new");
+//			names.push_back("Patstr_recording71new");
+//
+//
+//			////原始12个人的分组
+//			//names.push_back("Patstr_recording30new");//
+//			//names.push_back("Patstr_recording31new");
+//			//names.push_back("Patstr_recording63new");
+//			//names.push_back("Patstr_recording26new");
+//			//names.push_back("Patstr_recording32new");
+//			//names.push_back("Patstr_recording25new");
 //		}
 //		/*
 //		低分组

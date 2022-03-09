@@ -89,7 +89,7 @@
 //	//时间起点+AOI
 //	//Sequence8相比Sequence7 Option合并了
 //	FILE *fp;
-//	string questionid = "hou-shu-04-output\\";
+//	string questionid = "mid-shu-02-output\\";
 //	const string in_dir = "E:\\read-all\\filter\\" + questionid + "\\";
 //	const string out_dir = "E:\\out\\deleteBrackets\\";
 //	vector<string> names{

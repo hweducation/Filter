@@ -1,7 +1,7 @@
 ///*
-//在main的基础上改的
+//在sum的基础上改的
 //模式长度>=6的过滤出来后，计算每个模式的支持度，进行加和
-//修改成用于得到每道题目的因子分析输入文件
+//修改成用于得到所有题目的因子分析输入文件
 //输入 "E:\\read-all\\filter\\" + questionid + "\\";
 //输出 "E:\\out\\sum\\";
 ////按题目输出模式表格
@@ -84,19 +84,14 @@
 //	questionVec.push_back("hou-shu-04-output");
 //	questionVec.push_back("mid-shu-02-output");
 //	questionVec.push_back("mid-shu-03-output");
-//	questionVec.push_back("mid-shu-04-output");
-//
-//	string questionid = questionVec[0];
-//
-//	const string in_dir = "E:\\read-all\\filter\\" + questionid + "\\";
-//	const string out_dir = "E:\\out\\sum\\" + questionid + "\\";
+//	questionVec.push_back("mid-shu-04-output");		
 //	vector<string> names;
 //
 //	names.push_back("Patstr_recording18new");
 //	names.push_back("Patstr_recording46new");
 //	names.push_back("Patstr_recording23new");
 //	names.push_back("Patstr_recording24new");
-//	//names.push_back("Patstr_recording25new");//25变成high了
+//	names.push_back("Patstr_recording25new");//25变成high了
 //	names.push_back("Patstr_recording28new");
 //	names.push_back("Patstr_recording70new");
 //	//后加的
@@ -115,13 +110,13 @@
 //	names.push_back("Patstr_recording27new");
 //	names.push_back("Patstr_recording33new");
 //	//names.push_back("Patstr_recording34new");
-//	//names.push_back("Patstr_recording35new");
+//	names.push_back("Patstr_recording35new");
 //	names.push_back("Patstr_recording45new");
 //	names.push_back("Patstr_recording31new");
 //	names.push_back("Patstr_recording47new");
 //
 //	unordered_map<string, double> umScsuppAll;
-//	unordered_map<string, vector<pair<double,int> > > umAlpha_suppVec;//模式名，支持度，支持度，支持度，支持度，支持度...
+//	unordered_map<string, vector<pair<double, int> > > umAlpha_suppVec;//模式名，支持度，支持度，支持度，支持度，支持度...
 //	//mid-shu-01-output 没有25
 //	//mid-shu-03-output 没有25
 //	//mid-shu-04-output 没有23
@@ -130,69 +125,74 @@
 //	string in_path;
 //	int fileNum = 0;
 //
-//
+//	const string out_dir = "E:\\out\\sum\\";
 //	const string out_path = out_dir + "forFactorAnalysis.csv";//.tsv
 //
-//	cout << out_path << endl;
-//	ofstream out_file(out_path, ofstream::out);
-//	for (int k = 0; k < names.size(); k++)	{
-//		in_path = in_dir + names[k] + ".txt";
-//		cout << "第" << k << "个文件路径为：" << in_path << endl;
+//	for (int m = 0; m < questionVec.size(); m++) {
+//		const string in_dir = "E:\\read-all\\filter\\" + questionid + "\\";
 //
-//		long sum = 0;
-//		fp = fopen(in_path.c_str(), "r");//string to const char*
-//		if (!fp)
-//		{
-//			cout << "OPEN ERROR!" << endl;
-//			continue;
-//		}
-//		fileNum++;
-//		int i = 0;
+//		string questionid = questionVec[m];
 //
-//		char original_data[20000];
-//		//fgets(original_data, sizeof(original_data), fp);//表头
-//		const char * split = "\t";
+//		ofstream out_file(out_path, ofstream::out);
+//		for (int k = 0; k < names.size(); k++) {
+//			in_path = in_dir + names[k] + ".txt";
+//			cout << "第" << k << "个文件路径为：" << in_path << endl;
 //
-//		//读第一遍，计算sum
-//		while (fgets(original_data, sizeof(original_data), fp))
-//		{
-//			i++;//recode current line
-//			vector<string> line;
-//			//;get a line data in .tsv
-//			my_split(original_data, '\t', line);
-//			if (line.size() == 0) {
-//				break;
+//			long sum = 0;
+//			fp = fopen(in_path.c_str(), "r");//string to const char*
+//			if (!fp)
+//			{
+//				cout << "OPEN ERROR!" << endl;
+//				continue;
 //			}
-//			sum += atoi(line[2].c_str());
-//			if (feof(fp))
-//				break;
-//		}
-//		fp = fopen(in_path.c_str(), "r");//string to const char*
-//		if (!fp)
-//		{
-//			cout << "OPEN ERROR!" << endl;
-//			return 0;
-//		}
-//		//读第二遍，加入哈希表中，估计会爆内存？
-//		while (fgets(original_data, sizeof(original_data), fp))
-//		{
-//			vector<string> line;
-//			//;get a line data in .tsv
-//			my_split(original_data, '\t', line);
-//			if (line.size() == 0) {
-//				break;
+//			fileNum++;
+//			int i = 0;
+//
+//			char original_data[20000];
+//			//fgets(original_data, sizeof(original_data), fp);//表头
+//			const char * split = "\t";
+//
+//			//读第一遍，计算sum
+//			while (fgets(original_data, sizeof(original_data), fp))
+//			{
+//				i++;//recode current line
+//				vector<string> line;
+//				//;get a line data in .tsv
+//				my_split(original_data, '\t', line);
+//				if (line.size() == 0) {
+//					break;
+//				}
+//				sum += atoi(line[2].c_str());
+//				if (feof(fp))
+//					break;
 //			}
-//			double tempSupp = (double)atoi(line[2].c_str()) / (double)sum;//如果对值做平均的话，改为sum,如果单纯相加，改为1.0
-//			
-//			umScsuppAll[line[7]] += tempSupp;
-//			pair<double, int> supp_index(tempSupp, k);
-//			umAlpha_suppVec[line[7]].push_back(supp_index);
+//			fp = fopen(in_path.c_str(), "r");//string to const char*
+//			if (!fp)
+//			{
+//				cout << "OPEN ERROR!" << endl;
+//				return 0;
+//			}
+//			//读第二遍，加入哈希表中，估计会爆内存？
+//			while (fgets(original_data, sizeof(original_data), fp))
+//			{
+//				vector<string> line;
+//				//;get a line data in .tsv
+//				my_split(original_data, '\t', line);
+//				if (line.size() == 0) {
+//					break;
+//				}
+//				double tempSupp = (double)atoi(line[2].c_str()) / (double)sum;//如果对值做平均的话，改为sum,如果单纯相加，改为1.0
 //
-//			if (feof(fp))
-//				break;
+//				umScsuppAll[line[7]] += tempSupp;
+//				pair<double, int> supp_index(tempSupp, k);
+//				umAlpha_suppVec[line[7]].push_back(supp_index);
+//
+//				if (feof(fp))
+//					break;
+//			}
+//			fclose(fp);
+//
 //		}
-//		fclose(fp);
-//
 //	}
 //
 //	stringstream ss;
@@ -203,9 +203,6 @@
 //	ss << endl;
 //	for (auto aAlpha_suppVec : umAlpha_suppVec) {
 //		vector<pair<double, int> > suppVec = aAlpha_suppVec.second;
-//		//if (suppVec.size() < 7) {
-//		//	continue;
-//		//}
 //		//suppVec 0.002,0  0.03,5   0.23 6   就说明1234支持度全为0
 //		vector<double> suppVecZero;//suppVec补0
 //		int index = 0;
@@ -231,7 +228,7 @@
 //	}
 //
 //	out_file << ss.str() << endl;
-//	cout << ss.str() << endl;
+//	//cout << ss.str() << endl;
 //	out_file.close();
 //
 //

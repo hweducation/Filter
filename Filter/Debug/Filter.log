@@ -1,11 +1,4 @@
-﻿  everyPeopleQuestion.cpp
-c:\users\wang\source\repos\filter\filter\everypeoplequestion.cpp(134): warning C4018: “<”: 有符号/无符号不匹配
-c:\users\wang\source\repos\filter\filter\everypeoplequestion.cpp(196): warning C4018: “<”: 有符号/无符号不匹配
-c:\users\wang\source\repos\filter\filter\everypeoplequestion.cpp(281): warning C4018: “<”: 有符号/无符号不匹配
-c:\users\wang\source\repos\filter\filter\everypeoplequestion.cpp(380): warning C4018: “>”: 有符号/无符号不匹配
-c:\users\wang\source\repos\filter\filter\everypeoplequestion.cpp(386): warning C4018: “<”: 有符号/无符号不匹配
-c:\users\wang\source\repos\filter\filter\everypeoplequestion.cpp(392): warning C4018: “>”: 有符号/无符号不匹配
-c:\users\wang\source\repos\filter\filter\everypeoplequestion.cpp(398): warning C4018: “<”: 有符号/无符号不匹配
-c:\users\wang\source\repos\filter\filter\everypeoplequestion.cpp(438): warning C4018: “<”: 有符号/无符号不匹配
-c:\users\wang\source\repos\filter\filter\everypeoplequestion.cpp(512): warning C4018: “<”: 有符号/无符号不匹配
+﻿  highLow.cpp
+c:\users\wang\source\repos\filter\filter\highlow.cpp(131): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\wang\source\repos\filter\filter\highlow.cpp(187): warning C4018: “<”: 有符号/无符号不匹配
   Filter.vcxproj -> C:\Users\WANG\source\repos\Filter\Debug\Filter.exe

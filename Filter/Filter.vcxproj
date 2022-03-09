@@ -130,6 +130,7 @@
     <ClCompile Include="highLow.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="sum.cpp" />
+    <ClCompile Include="sum2.cpp" />
     <ClCompile Include="topNhigh_low.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
