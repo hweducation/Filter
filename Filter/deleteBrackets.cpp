@@ -93,10 +93,10 @@
 //	const string in_dir = "E:\\read-all\\filter\\" + questionid + "\\";
 //	const string out_dir = "E:\\out\\deleteBrackets\\";
 //	vector<string> names{
-//		"Patstr_recording18", "Patstr_recording23","Patstr_recording24","Patstr_recording25",
-//		"Patstr_recording26","Patstr_recording28","Patstr_recording30",
-//		"Patstr_recording31","Patstr_recording32","Patstr_recording46",
-//		"Patstr_recording63","Patstr_recording70",
+//		//"Patstr_recording18", "Patstr_recording23","Patstr_recording24","Patstr_recording25",
+//		//"Patstr_recording26","Patstr_recording28","Patstr_recording30",
+//		//"Patstr_recording31","Patstr_recording32","Patstr_recording46",
+//		//"Patstr_recording63","Patstr_recording70",
 //		"Patstr_recording18new","Patstr_recording23new","Patstr_recording24new","Patstr_recording25new",
 //		"Patstr_recording26new","Patstr_recording28new","Patstr_recording30new",
 //		"Patstr_recording31new","Patstr_recording32new","Patstr_recording46new",

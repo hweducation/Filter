@@ -278,7 +278,6 @@ int main()
 	}
 
 	//组别稀疏性计算开始
-
 	unordered_map<string, double> umAR;
 	unordered_map<string, double> umRR;
 	unordered_map<string, double> umTypical;//典型度
@@ -288,10 +287,47 @@ int main()
 	double ARsum = 0;
 	int alphasum = 0;//模式总数
 
-	//输出高分组典型度
-	for (auto aumScsuppAllHigh : umScsuppAllHigh) {
-		double AR = aumScsuppAllHigh.second - umScsuppAllLow[aumScsuppAllHigh.first];
-		umAR[aumScsuppAllHigh.first] = AR;
+	////输出高分组典型度
+	//for (auto aumScsuppAllHigh : umScsuppAllHigh) {
+	//	double AR = aumScsuppAllHigh.second - umScsuppAllLow[aumScsuppAllHigh.first];
+	//	umAR[aumScsuppAllHigh.first] = AR;
+	//	ARsum += AR;
+	//	alphasum++;
+	//}
+	//for (auto aUmAR : umAR) {
+	//	double RR = aUmAR.second - ARsum / (double)alphasum;
+	//	umRR[aUmAR.first] = RR;
+	//	//公式3.7的分段函数
+	//	if (umScsuppAllLow[aUmAR.first] >= hss) {
+	//		umTypical[aUmAR.first] = 0;
+	//	}
+	//	else {
+	//		umTypical[aUmAR.first] = (hss - umScsuppAllLow[aUmAR.first])* umRR[aUmAR.first];
+	//	}
+	//}
+	////组稀疏性计算结束
+	//stringstream ss;
+	//ss <<  "AR" << tab << "RR" << tab << "Typical" << tab << "高分组支持度" << tab << "低分组支持度" << tab << "alpha" << endl;
+	//for (auto aUmScsuppAllHigh : umScsuppAllHigh) {
+	//	ss << umAR[aUmScsuppAllHigh.first] << tab << umRR[aUmScsuppAllHigh.first] << tab << umTypical[aUmScsuppAllHigh.first] << tab <<
+	//		umScsuppAllHigh[aUmScsuppAllHigh.first] << tab << umScsuppAllLow[aUmScsuppAllHigh.first] << tab <<
+	//		aUmScsuppAllHigh.first;
+	//}
+	//cout << out_dir + questionid + "\\highLowTypical.csv" << endl;
+	//ofstream out_file(out_dir + questionid + "\\highLowTypical.csv", ofstream::out);
+	//out_file << ss.str() << endl;
+
+	//cout << ss.str() << endl;
+	//out_file.close();
+
+
+
+
+
+	//输出低分组典型度
+	for (auto aumScsuppAllLow : umScsuppAllLow) {
+		double AR = aumScsuppAllLow.second - umScsuppAllHigh[aumScsuppAllLow.first];
+		umAR[aumScsuppAllLow.first] = AR;
 		ARsum += AR;
 		alphasum++;
 	}
@@ -299,30 +335,27 @@ int main()
 		double RR = aUmAR.second - ARsum / (double)alphasum;
 		umRR[aUmAR.first] = RR;
 		//公式3.7的分段函数
-		if (umScsuppAllLow[aUmAR.first] >= hss) {
+		if (umScsuppAllHigh[aUmAR.first] >= hss) {
 			umTypical[aUmAR.first] = 0;
 		}
 		else {
-			umTypical[aUmAR.first] = (hss - umScsuppAllLow[aUmAR.first])* umRR[aUmAR.first];
+			umTypical[aUmAR.first] = (hss - umScsuppAllHigh[aUmAR.first])* umRR[aUmAR.first];
 		}
 	}
 
 	//组稀疏性计算结束
-
 	stringstream ss;
-	ss <<  "AR" << tab << "RR" << tab << "Typical" << tab << "高分组支持度" << tab << "低分组支持度" << tab << "alpha" << endl;
-	for (auto aUmScsuppAllHigh : umScsuppAllHigh) {
-		ss << umAR[aUmScsuppAllHigh.first] << tab << umRR[aUmScsuppAllHigh.first] << tab << umTypical[aUmScsuppAllHigh.first] << tab <<
-			umScsuppAllHigh[aUmScsuppAllHigh.first] << tab << umScsuppAllLow[aUmScsuppAllHigh.first] << tab <<
-			aUmScsuppAllHigh.first;
+	ss << "AR" << tab << "RR" << tab << "Typical" << tab << "高分组支持度" << tab << "低分组支持度" << tab << "alpha" << endl;
+	for (auto aUmScsuppAllLow : umScsuppAllLow) {
+		ss << umAR[aUmScsuppAllLow.first] << tab << umRR[aUmScsuppAllLow.first] << tab << umTypical[aUmScsuppAllLow.first] << tab <<
+			umScsuppAllLow[aUmScsuppAllLow.first] << tab << umScsuppAllHigh[aUmScsuppAllLow.first] << tab <<
+			aUmScsuppAllLow.first;
 	}
-	cout << out_dir + questionid + "\\highLowTypical.csv" << endl;
-	ofstream out_file(out_dir + questionid + "\\highLowTypical.csv", ofstream::out);
+	ofstream out_file(out_dir + questionid + "\\lowHighTypical.csv", ofstream::out);
 	out_file << ss.str() << endl;
 
 	cout << ss.str() << endl;
 	out_file.close();
-
 
 
 	system("pause");
