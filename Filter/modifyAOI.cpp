@@ -107,8 +107,8 @@
 //	questionVec.push_back("mid-shu-03-output");//3
 //	questionVec.push_back("mid-shu-04-output");
 //
-//	string questionid = questionVec[4];
-//
+//	string questionid = questionVec[3];//注意23需要多一段代码
+//	 
 //	const string in_dir = "E:\\read-allquestion\\themeout\\" + questionid + "\\";
 //	//read-allquestion\themeout\hou - shu - 01 - output
 //	const string out_dir = "E:\\out\\filter\\";
@@ -175,6 +175,7 @@
 //				vector<string> AOIarr;
 //				my_split(line[7], ' ', AOIarr);
 //				/*
+//				//只有mid02 mid03需要这段cd转换的代码
 //				for (int p = 0; p < AOIarr.size(); p++) {
 //					if (AOIarr[p] == "optiond") {
 //						AOIarr[p] = "optionc";

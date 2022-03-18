@@ -1,8 +1,8 @@
 ////删除模式名中的括号,然后将模式合并，这是由于虽然树的结构是不同的但是本质上是一种模式
 ////%输入"E:\\read-all\\filter\\" + questionid + "\\";
 ////E:\\out\\filter\\+ questionid + "\\";
-////输出 "E:\\out\\deleteBrackets\\";
-////结束后把输出复制到输入重新跑另外3个代码
+////输出 "E:\\out\\deleteBrackets\\";E:\out\deleteBrackets
+////结束后把输出复制到E:\read-all\filter重新跑另外3个代码
 //#define _CRT_SECURE_NO_WARNINGS
 //#include <iostream>
 //#include <sstream>
@@ -97,7 +97,7 @@
 //	questionVec.push_back("mid-shu-03-output");
 //	questionVec.push_back("mid-shu-04-output");
 //
-//	string questionid = questionVec[0] + "\\";
+//	string questionid = questionVec[3] + "\\";
 //
 //	const string in_dir = "E:\\out\\filter\\" + questionid + "\\";
 //	const string out_dir = "E:\\out\\deleteBrackets\\";

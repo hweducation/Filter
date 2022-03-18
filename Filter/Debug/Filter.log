@@ -1,5 +1,10 @@
-﻿  modifyAOI.cpp
-c:\users\wang\source\repos\filter\filter\modifyaoi.cpp(134): warning C4018: “<”: 有符号/无符号不匹配
-c:\users\wang\source\repos\filter\filter\modifyaoi.cpp(186): warning C4018: “<”: 有符号/无符号不匹配
-c:\users\wang\source\repos\filter\filter\modifyaoi.cpp(150): warning C4101: “data2”: 未引用的局部变量
+﻿  deleteBrackets.cpp
+  forSPSS.cpp
+c:\users\wang\source\repos\filter\filter\forspss.cpp(157): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\wang\source\repos\filter\filter\forspss.cpp(159): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\wang\source\repos\filter\filter\forspss.cpp(231): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\wang\source\repos\filter\filter\forspss.cpp(243): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\wang\source\repos\filter\filter\forspss.cpp(253): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\wang\source\repos\filter\filter\forspss.cpp(258): warning C4018: “<”: 有符号/无符号不匹配
+  正在生成代码...
   Filter.vcxproj -> C:\Users\WANG\source\repos\Filter\Debug\Filter.exe
