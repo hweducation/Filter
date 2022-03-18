@@ -1,16 +1,32 @@
-////删除模式名中的括号,然后将模式合并，这是由于虽然树的结构是不同的但是本质上是一种模式
-////%输入"E:\\read-all\\filter\\" + questionid + "\\";
-////E:\\out\\filter\\+ questionid + "\\";
-////输出 "E:\\out\\deleteBrackets\\";
-////结束后把输出复制到输入重新跑另外3个代码
+///*
+//修改自main
+//将mid02 mid03的optionCD互换
+//输入
+//E:\read-allquestion\themeout\hou-shu-01-output
+//输出"E:\\out\\filter\\";
+//E:\out\filter\hou-shu-01-output
+//*/
 //#define _CRT_SECURE_NO_WARNINGS
 //#include <iostream>
 //#include <sstream>
 //#include <fstream>
 //#include <vector>
-//#include <unordered_map>
 //#include <algorithm>
 //using namespace std;
+///*
+//名称:my_split(const std::string& src, const char& delim,
+//		 std::vector<std::string>& vec)
+//功能:用分隔符将源字符串分隔为多个子串并传出; n个分隔符, 分n+1个子串
+//
+//参数:
+//	 src-传入参数, 源字符串;
+//	 delim-传入参数, 分隔符;
+//	 vec-传出参数, 子串的集合;
+//
+//返回值:
+//	0-成功;
+//	其它-失败;
+// */
 //
 //int my_split(const string& src, const char& delim,
 //	vector<string>& vec)
@@ -70,37 +86,32 @@
 //		return tpattern1.n > tpattern2.n;
 //	}
 //};
-//class PatStr {
-//public:
-//	string l0;
-//	string l1;
-//	string l2;
-//	string l3;
-//	string l4;
-//	string l5;
-//	string l6;
-//	PatStr(string line0, string line1, string line2, string line3, string line4, string line5, string line6) :
-//		l0(line0), l1(line1), l2(line2), l3(line3), l4(line4), l5(line5), l6(line6) {}
-//	PatStr() {
-//		l0 = l1 = l2 = l3 = l4 = l5 = l6 = "";
-//	}
-//};
 //int main()
 //{
 //	//时间起点+AOI
 //	//Sequence8相比Sequence7 Option合并了
 //	FILE *fp;
+//
+//	vector<string> lengthVec;//长度是
+//	lengthVec.push_back("2");
+//	lengthVec.push_back("3");
+//	lengthVec.push_back("4");
+//	lengthVec.push_back("5");
+//	lengthVec.push_back("6");
+//
+//
 //	vector<string> questionVec;
 //	questionVec.push_back("hou-shu-01-output");
 //	questionVec.push_back("hou-shu-04-output");
-//	questionVec.push_back("mid-shu-02-output");
-//	questionVec.push_back("mid-shu-03-output");
+//	questionVec.push_back("mid-shu-02-output");//2
+//	questionVec.push_back("mid-shu-03-output");//3
 //	questionVec.push_back("mid-shu-04-output");
 //
-//	string questionid = questionVec[0] + "\\";
+//	string questionid = questionVec[4];
 //
-//	const string in_dir = "E:\\out\\filter\\" + questionid + "\\";
-//	const string out_dir = "E:\\out\\deleteBrackets\\";
+//	const string in_dir = "E:\\read-allquestion\\themeout\\" + questionid + "\\";
+//	//read-allquestion\themeout\hou - shu - 01 - output
+//	const string out_dir = "E:\\out\\filter\\";
 //	vector<string> names{
 //		//"Patstr_recording18", "Patstr_recording23","Patstr_recording24","Patstr_recording25",
 //		//"Patstr_recording26","Patstr_recording28","Patstr_recording30",
@@ -113,7 +124,7 @@
 //		//新加的10道
 //		"Patstr_recording19new","Patstr_recording20new","Patstr_recording27new",
 //		"Patstr_recording33new","Patstr_recording34new","Patstr_recording35new",
-//		"Patstr_recording45new","Patstr_recording47new","Patstr_recording52new","Patstr_recording71new"
+//		"Patstr_recording45new","Patstr_recording47new","Patstr_recording52new","Patstr_recording71new",
 //
 //	};//这个没有挖掘到模式
 //	//mid-shu-01-output 没有25
@@ -124,7 +135,7 @@
 //	for (int k = 0; k < names.size(); k++) {
 //		in_path = in_dir + names[k] + ".txt";
 //		cout << "第" << k << "个文件路径为：" << in_path << endl;
-//		const string out_path = out_dir + questionid + names[k] + ".txt";//.tsv
+//		const string out_path = out_dir + questionid + "\\" + names[k] + ".txt";//.tsv
 //		ofstream out_file(out_path, ofstream::out);
 //
 //		fp = fopen(in_path.c_str(), "r");//string to const char*
@@ -142,8 +153,7 @@
 //		const char * split = "\t";
 //		string last_eye_movement_type = "0";
 //		int start_flag = 0;
-//		vector <string> res;//用于记录总的
-//		unordered_map <string, PatStr> um;
+//		vector <string> res;//用于记录总数
 //
 //		string lastType = "-1";
 //		while (fgets(original_data, sizeof(original_data), fp))
@@ -155,43 +165,59 @@
 //			if (line.size() == 0) {
 //				break;
 //			}
-//			//if (line[3] == "2" || line[3] == "3" || line[3] == "4" || line[3] == "5" || line[3] == "6") {
-//			//	res.push_back(original_data);
-//			//}
-//			string newOriginal_data = "";
-//			for (int i = 0; i < 6; i++) {
-//				newOriginal_data += line[i] + '\t';
-//			}
-//			string patStringDeleteBracket = "";//删除括号后的模式名
-//			//删除括号
-//			for (auto a : line[7]) {
-//				if (a != '(' && a != ')') {
-//					patStringDeleteBracket += a;
-//				}
-//			}
-//			newOriginal_data += patStringDeleteBracket;
-//			//把出现次数合并
-//			//map中没有这个模式名
-//			if (um.find(patStringDeleteBracket) == um.end()) {
-//				PatStr patstrTemp(line[0], line[1], line[2], line[3], line[4], line[5], line[6]);
-//				um[patStringDeleteBracket] = patstrTemp;
-//			}
-//			else {//map中存在这个模式名
-//				int n = atoi(line[2].c_str())+ atoi(um[patStringDeleteBracket].l2.c_str());
-//				um[patStringDeleteBracket].l2 = to_string(n);
 //
+//			if (line[3] == "2" || line[3] == "3" || line[3] == "4" || line[3] == "5" || line[3] == "6") {
+//			//if (line[3] == "3") {
+//				//if (line[3] == "3" || line[3] == "7" || line[3] == "8" || line[3] == "4" || line[3] == "5" || line[3] == "6") {
+//
+//				//line[7]进行字符串替换 只有mid02 mid03需要这么操作
+//
+//				vector<string> AOIarr;
+//				my_split(line[7], ' ', AOIarr);
+//				/*
+//				for (int p = 0; p < AOIarr.size(); p++) {
+//					if (AOIarr[p] == "optiond") {
+//						AOIarr[p] = "optionc";
+//					}
+//					else if (AOIarr[p] == "optionc") {
+//						AOIarr[p] = "optiond";
+//					}
+//				}*/
+//				string newline7;
+//				for (int p = 0; p < AOIarr.size()-1; p++) {
+//					newline7 += AOIarr[p] + " ";
+//				}
+//				newline7 += AOIarr[AOIarr.size() - 1];
+//				string new_data = line[0] + '\t' + line[1] + '\t' + line[2] + '\t' + line[3] + '\t' + line[4] + '\t' + line[5] + '\t' + line[6] + '\t' + newline7;
+//				res.push_back(new_data);
 //			}
-//			
-//			res.push_back(newOriginal_data);
 //			if (feof(fp))
 //				break;
 //		}
 //		stringstream ss;
-//		char tab = '\t';
-//		for (auto it = um.begin(); it != um.end();it++) {
-//			ss << it->second.l0 << tab << it->second.l1 << tab << it->second.l2 << tab << it->second.l3
-//				<< tab << it->second.l4 << tab << it->second.l5 << tab << it->second.l6 << tab << it->first;
+//		string tab = "\t";
+//		/* 对模式按照支持度排序
+//		vector<TPattern> tPatternVec;
+//		for (auto a	 : res) {
+//			//ss << a.first << "," << a.second.first << "," << a.second.second << endl;
+//			vector <string> temp;
+//			my_split(a, '\t', temp);
+//			TPattern tpttern(atoi(temp[2].c_str()), atoi(temp[3].c_str()), temp[7]);
+//			tPatternVec.push_back(tpttern);
+//			//ss << a;
 //		}
+//		//对vector<TPattern*> tPatternVec排序
+//		sort(tPatternVec.begin(), tPatternVec.end(), CompGreater());//降序排序
+//		for (auto a : tPatternVec) {
+//			ss << a.n << '\t' << a.length << '\t' << a.patstring;
+//		}
+//		*/
+//
+//		for (auto a : res) {
+//			ss << a;
+//		}
+//		//ss << "total sequence " << merge_res.size() << endl;
+//		//cout << ss.str() << endl;
 //		out_file << ss.str() << endl;
 //		cout << ss.str() << endl;
 //		fclose(fp);

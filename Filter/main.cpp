@@ -3,6 +3,7 @@
 //修改为把挖掘出的模式长度 >= 3的过滤出来
 //并排序输出
 //输入"E:\\read-all\\" + questionid;
+//E:\read-allquestion\themeout\hou-shu-01-output
 //输出"E:\\out\\filter\\";
 //*/
 //#define _CRT_SECURE_NO_WARNINGS
@@ -90,8 +91,26 @@
 //	//时间起点+AOI
 //	//Sequence8相比Sequence7 Option合并了
 //	FILE *fp;
-//	string questionid = "mid-shu-02-output\\";
-//	const string in_dir = "E:\\read-all\\" + questionid;
+//
+//	vector<string> lengthVec;//长度是
+//	lengthVec.push_back("2");
+//	lengthVec.push_back("3");
+//	lengthVec.push_back("4");
+//	lengthVec.push_back("5");
+//	lengthVec.push_back("6");
+//
+//
+//	vector<string> questionVec;
+//	questionVec.push_back("hou-shu-01-output");
+//	questionVec.push_back("hou-shu-04-output");
+//	questionVec.push_back("mid-shu-02-output");
+//	questionVec.push_back("mid-shu-03-output");
+//	questionVec.push_back("mid-shu-04-output");
+//
+//	string questionid = questionVec[3];
+//
+//	const string in_dir = "E:\\read-allquestion\\themeout\\" + questionid + "\\";
+//	//read-allquestion\themeout\hou - shu - 01 - output
 //	const string out_dir = "E:\\out\\filter\\";
 //	vector<string> names{
 //		//"Patstr_recording18", "Patstr_recording23","Patstr_recording24","Patstr_recording25",
@@ -116,7 +135,7 @@
 //	for (int k = 0; k < names.size(); k++) {
 //		in_path = in_dir + names[k] + ".txt";
 //		cout << "第" << k << "个文件路径为：" << in_path << endl;
-//		const string out_path = out_dir + questionid + names[k] + ".txt";//.tsv
+//		const string out_path = out_dir + questionid + "\\" + names[k] + ".txt";//.tsv
 //		ofstream out_file(out_path, ofstream::out);
 //
 //		fp = fopen(in_path.c_str(), "r");//string to const char*
@@ -147,7 +166,8 @@
 //				break;
 //			}
 //			//if (line[3] == "2" || line[3] == "3" || line[3] == "4" || line[3] == "5" || line[3] == "6") {
-//			if (line[3] == "3" || line[3] == "7" || line[3] == "8" || line[3] == "4" || line[3] == "5" || line[3] == "6") {
+//			if (line[3] == "3" ) {
+//				//if (line[3] == "3" || line[3] == "7" || line[3] == "8" || line[3] == "4" || line[3] == "5" || line[3] == "6") {
 //				res.push_back(original_data);
 //			}
 //			if (feof(fp))

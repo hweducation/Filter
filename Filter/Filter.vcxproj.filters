@@ -39,5 +39,11 @@
     <ClCompile Include="sum2.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="forSPSS.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="modifyAOI.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

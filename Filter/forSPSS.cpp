@@ -1,7 +1,7 @@
 ///*
-//在main的基础上改的
-//模式长度>=6的过滤出来后，计算每个模式的支持度，进行加和
-//修改成用于得到每道题目的因子分析输入文件
+//在sum的基础上改的
+//修改成将mid02 mid03的DC交换后，将所有人所有题目的模式合并
+//用于全部题目的因子分析
 //输入 "E:\\read-all\\filter\\" + questionid + "\\";
 //输出 "E:\\out\\sum\\";
 ////按题目输出模式表格
@@ -154,7 +154,7 @@
 //	//names.push_back("Patstr_recording47new");
 //
 //	unordered_map<string, double> umScsuppAll;
-//	unordered_map<string, vector<pair<double,int> > > umAlpha_suppVec;//模式名，支持度，支持度，支持度，支持度，支持度...
+//	unordered_map<string, vector<pair<double, int> > > umAlpha_suppVec;//模式名，支持度，支持度，支持度，支持度，支持度...
 //	//mid-shu-01-output 没有25
 //	//mid-shu-03-output 没有25
 //	//mid-shu-04-output 没有23
@@ -163,12 +163,11 @@
 //	string in_path;
 //	int fileNum = 0;
 //
-//
-//	const string out_path = out_dir + questionid+ "forFactorAnalysis2.csv";//.tsv
+//	const string out_path = out_dir + questionid + "forFactorAnalysis2.csv";//.tsv
 //
 //	cout << out_path << endl;
 //	ofstream out_file(out_path, ofstream::out);
-//	for (int k = 0; k < names.size(); k++)	{
+//	for (int k = 0; k < names.size(); k++) {
 //		in_path = in_dir + names[k] + ".txt";
 //		cout << "第" << k << "个文件路径为：" << in_path << endl;
 //
@@ -216,7 +215,7 @@
 //				break;
 //			}
 //			double tempSupp = (double)atoi(line[2].c_str()) / (double)sum;//如果对值做平均的话，改为sum,如果单纯相加，改为1.0
-//			
+//
 //			umScsuppAll[line[7]] += tempSupp;
 //			pair<double, int> supp_index(tempSupp, k);
 //			umAlpha_suppVec[line[7]].push_back(supp_index);

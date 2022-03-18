@@ -127,8 +127,10 @@
     <ClCompile Include="deleteBrackets.cpp" />
     <ClCompile Include="everypeople.cpp" />
     <ClCompile Include="everyPeopleQuestion.cpp" />
+    <ClCompile Include="forSPSS.cpp" />
     <ClCompile Include="highLow.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="modifyAOI.cpp" />
     <ClCompile Include="sum.cpp" />
     <ClCompile Include="sum2.cpp" />
     <ClCompile Include="topNhigh_low.cpp" />
