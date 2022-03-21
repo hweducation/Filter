@@ -7,7 +7,7 @@
 //按题目输出模式表格
 
 //所有题目统一输出模式表格
-
+E:\out\sum
 */
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>

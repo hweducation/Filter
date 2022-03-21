@@ -4,7 +4,7 @@
 //每个人每道题TopN的模式到一个文件中，
 //输入 "E:\\read-all\\filter\\" + questionid + "\\";
 //输出 "E:\\out\\sum\\" + questionid + "\\highallSparse.csv";
-//
+//E:\out\sum\mid-shu-02-output
 //*/
 //#define _CRT_SECURE_NO_WARNINGS
 //#include <iostream>
@@ -129,7 +129,7 @@
 //	unordered_map<string, double> umScsuppAllLow;//低分组支持度
 //	const string out_dir = "E:\\out\\sum\\";
 //	string tab = ",";
-//	string questionid = questionVec[2];
+//	string questionid = questionVec[4];
 //	
 //	for (int k = 0; k < categoryNames.size(); k++) {
 //		string category = categoryNames[k];//low  high categoryNames[k]
@@ -147,47 +147,60 @@
 //		//	"Patstr_recording46new","Patstr_recording70new"
 //		//};//高分组
 //		if (category == "high") {
-//			names.push_back("Patstr_recording18new");
-//			names.push_back("Patstr_recording46new");
-//			names.push_back("Patstr_recording23new");
-//			names.push_back("Patstr_recording24new");
-//			names.push_back("Patstr_recording25new");
-//			names.push_back("Patstr_recording28new");
-//			names.push_back("Patstr_recording70new");
-//			names.push_back("Patstr_recording20new");
-//			names.push_back("Patstr_recording52new");
-//			names.push_back("Patstr_recording34new");
-//			names.push_back("Patstr_recording31new");
-//
-//			////原始12个人的分组
 //			//names.push_back("Patstr_recording18new");
 //			//names.push_back("Patstr_recording46new");
-//			//names.push_back("Patstr_recording70new");
-//			//names.push_back("Patstr_recording28new");
-//			//names.push_back("Patstr_recording24new");
 //			//names.push_back("Patstr_recording23new");
-//		}
-//		else {
-//			names.push_back("Patstr_recording26new");
-//			names.push_back("Patstr_recording30new");//
-//			names.push_back("Patstr_recording32new");
-//			names.push_back("Patstr_recording63new");
-//			names.push_back("Patstr_recording19new");
-//			names.push_back("Patstr_recording27new");
-//			names.push_back("Patstr_recording33new");
-//			names.push_back("Patstr_recording35new");
-//			names.push_back("Patstr_recording45new");
+//			//names.push_back("Patstr_recording24new");
+//			//names.push_back("Patstr_recording25new");
+//			//names.push_back("Patstr_recording28new");
+//			//names.push_back("Patstr_recording70new");
+//			//names.push_back("Patstr_recording20new");
+//			//names.push_back("Patstr_recording52new");
+//			//names.push_back("Patstr_recording34new");
+//			//names.push_back("Patstr_recording31new");
+//
+//			//原始12个人的分组
+//			names.push_back("Patstr_recording18new");
+//			names.push_back("Patstr_recording46new");
+//			names.push_back("Patstr_recording70new");
+//			names.push_back("Patstr_recording28new");
+//			names.push_back("Patstr_recording24new");
+//			names.push_back("Patstr_recording23new");
+//
+//
 //			names.push_back("Patstr_recording47new");
 //			names.push_back("Patstr_recording71new");
-//
-//
-//			////原始12个人的分组
-//			//names.push_back("Patstr_recording30new");//
-//			//names.push_back("Patstr_recording31new");
-//			//names.push_back("Patstr_recording63new");
+//			names.push_back("Patstr_recording52new");
+//			//没有25 20了
+//		}
+//		else {
 //			//names.push_back("Patstr_recording26new");
+//			//names.push_back("Patstr_recording30new");//
 //			//names.push_back("Patstr_recording32new");
-//			//names.push_back("Patstr_recording25new");
+//			//names.push_back("Patstr_recording63new");
+//			//names.push_back("Patstr_recording19new");
+//			//names.push_back("Patstr_recording27new");
+//			//names.push_back("Patstr_recording33new");
+//			//names.push_back("Patstr_recording35new");
+//			//names.push_back("Patstr_recording45new");
+//			//names.push_back("Patstr_recording47new");
+//			//names.push_back("Patstr_recording71new");
+//
+//
+//			//原始12个人的分组
+//			names.push_back("Patstr_recording30new");//
+//			names.push_back("Patstr_recording31new");
+//			names.push_back("Patstr_recording63new");
+//			names.push_back("Patstr_recording26new");
+//			names.push_back("Patstr_recording32new");
+//			names.push_back("Patstr_recording25new");
+//
+//			names.push_back("Patstr_recording33new");
+//			names.push_back("Patstr_recording35new");
+//			names.push_back("Patstr_recording34new");
+//			names.push_back("Patstr_recording45new");
+//			names.push_back("Patstr_recording28new");
+//			//多了25  没有27 19
 //		}
 //		/*
 //		低分组
