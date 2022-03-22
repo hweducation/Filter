@@ -1,10 +1,8 @@
-﻿  everyPeopleQuestion.cpp
-  forSPSS.cpp
+﻿  forSPSS.cpp
 c:\users\wang\source\repos\filter\filter\forspss.cpp(157): warning C4018: “<”: 有符号/无符号不匹配
 c:\users\wang\source\repos\filter\filter\forspss.cpp(159): warning C4018: “<”: 有符号/无符号不匹配
-c:\users\wang\source\repos\filter\filter\forspss.cpp(231): warning C4018: “<”: 有符号/无符号不匹配
-c:\users\wang\source\repos\filter\filter\forspss.cpp(243): warning C4018: “<”: 有符号/无符号不匹配
-c:\users\wang\source\repos\filter\filter\forspss.cpp(253): warning C4018: “<”: 有符号/无符号不匹配
-c:\users\wang\source\repos\filter\filter\forspss.cpp(258): warning C4018: “<”: 有符号/无符号不匹配
-  正在生成代码...
+c:\users\wang\source\repos\filter\filter\forspss.cpp(237): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\wang\source\repos\filter\filter\forspss.cpp(250): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\wang\source\repos\filter\filter\forspss.cpp(260): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\wang\source\repos\filter\filter\forspss.cpp(265): warning C4018: “<”: 有符号/无符号不匹配
   Filter.vcxproj -> C:\Users\WANG\source\repos\Filter\Debug\Filter.exe

@@ -90,29 +90,29 @@ int main()
 	FILE *fp;
 	const string out_dir = "E:\\out\\sum\\";// +questionid + "\\";//
 	vector<string> names;
-	names.push_back("Patstr_recording25new");
-	names.push_back("Patstr_recording47new");
 	names.push_back("Patstr_recording18new");
-	names.push_back("Patstr_recording71new");
-	names.push_back("Patstr_recording46new");
-	names.push_back("Patstr_recording52new");
-	names.push_back("Patstr_recording28new");
-	names.push_back("Patstr_recording70new");
-	names.push_back("Patstr_recording24new");
 	names.push_back("Patstr_recording23new");
-	names.push_back("Patstr_recording20new");
-
-	names.push_back("Patstr_recording30new");
-	names.push_back("Patstr_recording27new");
-	names.push_back("Patstr_recording31new");
-	names.push_back("Patstr_recording33new");
-	names.push_back("Patstr_recording63new");
+	names.push_back("Patstr_recording24new");
+	names.push_back("Patstr_recording25new");
 	names.push_back("Patstr_recording26new");
-	names.push_back("Patstr_recording19new");
-	names.push_back("Patstr_recording35new");
-	names.push_back("Patstr_recording34new");
+	names.push_back("Patstr_recording27new");
+	names.push_back("Patstr_recording28new");
+	names.push_back("Patstr_recording30new");
+	names.push_back("Patstr_recording31new");
 	names.push_back("Patstr_recording32new");
+	names.push_back("Patstr_recording33new");
+	names.push_back("Patstr_recording34new");
+	names.push_back("Patstr_recording35new");
 	names.push_back("Patstr_recording45new");
+	names.push_back("Patstr_recording46new");
+	names.push_back("Patstr_recording47new");
+	names.push_back("Patstr_recording52new");
+	names.push_back("Patstr_recording63new");
+	names.push_back("Patstr_recording70new");
+	names.push_back("Patstr_recording71new");
+	//names.push_back("Patstr_recording20new");
+
+	//names.push_back("Patstr_recording19new");
 
 	//names.push_back("Patstr_recording18new");
 	//names.push_back("Patstr_recording46new");
@@ -209,15 +209,21 @@ int main()
 				double tempSupp = (double)atoi(line[2].c_str()) / (double)sum;//如果对值做平均的话，改为sum,如果单纯相加，改为1.0
 
 				umScsuppUser[line[7]] += tempSupp;
-				if (i == questionVec.size() - 1) {
-					//最后一道题的时候加入到模式名，支持度，支持度，支持度，支持度，支持度..向量中
-					pair<double, int> supp_index(tempSupp / questionVec.size(), k);
-					umAlpha_suppVec[line[7]].push_back(supp_index);
-				}
+				//if (i == questionVec.size() - 1) {
+				//	//最后一道题的时候加入到模式名，支持度，支持度，支持度，支持度，支持度..向量中
+				//	pair<double, int> supp_index(tempSupp / questionVec.size(), k);
+				//	umAlpha_suppVec[line[7]].push_back(supp_index);
+				//}
 				if (feof(fp))
 					break;
 			}
 			fclose(fp);
+
+		}		
+		//最后一道题的时候加入到模式名，支持度，支持度，支持度，支持度，支持度..向量中
+		for (auto aUmScsuppUser : umScsuppUser) {
+			pair<double, int> supp_index(aUmScsuppUser.second / questionVec.size(), k);
+			umAlpha_suppVec[aUmScsuppUser.first].push_back(supp_index);
 		}
 		umScsuppUser.clear();
 	}
@@ -234,9 +240,10 @@ int main()
 	ss << endl;
 	for (auto aAlpha_suppVec : umAlpha_suppVec) {
 		vector<pair<double, int> > suppVec = aAlpha_suppVec.second;
-		//if (suppVec.size() < 7) {
-		//	continue;
-		//}
+		
+		if (suppVec.size() <= 1) {
+			continue;
+		}
 		//suppVec 0.002,0  0.03,5   0.23 6   就说明1234支持度全为0
 		vector<double> suppVecZero;//suppVec补0
 		int index = 0;
